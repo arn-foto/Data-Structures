@@ -70,8 +70,8 @@ class DoublyLinkedList:
             self.tail.next = new_node
         else:
             self.head = new_node
-        self.tail = new_node
-        self.length += 1
+            self.tail = new_node
+            self.length += 1
             
     """
     Removes the List's current tail node, making the 
@@ -79,7 +79,19 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        if self.length ==1:
+            value = self.tail.value
+            self.tail = None
+            self.head = None
+            self.length -= 1
+            return value
+        else:
+            value = self.tail.value
+            self.tail = self.tail.prev
+            self.tail = None
+            self.length -= 1
+            return value
+
             
     """
     Removes the input node from its current spot in the 
