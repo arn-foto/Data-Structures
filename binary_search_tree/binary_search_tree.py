@@ -12,12 +12,26 @@ This part of the project comprises two days:
 class BSTNode:
     def __init__(self, value):
         self.value = value
-        self.left = None
-        self.right = None
-
+        self.left: BSTNode = None
+        self.right: BSTNode = None
+        
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # This will check is the current value is less than the nodes value
+        if value < self.value:
+            # This checks to see if a left node exists
+            if self.left is None:
+                self.left = BSTNode(value)
+            # Otherwise it doesn't have a left child and we can park the new node here
+            else:
+                self.left.insert(value)
+        # Otherwise the value is greater than or equal to the current node's value
+        else:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
+
 
     # Return True if the tree contains the value
     # False if it does not
@@ -32,54 +46,54 @@ class BSTNode:
     def for_each(self, fn):
         pass
 
-    # Part 2 -----------------------
+    # # Part 2 -----------------------
 
-    # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        pass
+    # # Print all the values in order from low to high
+    # # Hint:  Use a recursive, depth first traversal
+    # def in_order_print(self):
+    #     pass
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative breadth first traversal
-    def bft_print(self):
-        pass
+    # # Print the value of every node, starting with the given node,
+    # # in an iterative breadth first traversal
+    # def bft_print(self):
+    #     pass
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
-    def dft_print(self):
-        pass
+    # # Print the value of every node, starting with the given node,
+    # # in an iterative depth first traversal
+    # def dft_print(self):
+    #     pass
 
-    # Stretch Goals -------------------------
-    # Note: Research may be required
+    # # Stretch Goals -------------------------
+    # # Note: Research may be required
 
-    # Print Pre-order recursive DFT
-    def pre_order_dft(self):
-        pass
+    # # Print Pre-order recursive DFT
+    # def pre_order_dft(self):
+    #     pass
 
-    # Print Post-order recursive DFT
-    def post_order_dft(self):
-        pass
+    # # Print Post-order recursive DFT
+    # def post_order_dft(self):
+    #     pass
 
 """
 This code is necessary for testing the `print` methods
 """
 bst = BSTNode(1)
 
-bst.insert(8)
-bst.insert(5)
-bst.insert(7)
-bst.insert(6)
-bst.insert(3)
-bst.insert(4)
-bst.insert(2)
+# bst.insert(8)
+# bst.insert(5)
+# bst.insert(7)
+# bst.insert(6)
+# bst.insert(3)
+# bst.insert(4)
+# bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
+# bst.bft_print()
+# bst.dft_print()
 
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-bst.in_order_dft()
-print("post order")
-bst.post_order_dft()  
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# bst.in_order_dft()
+# print("post order")
+# bst.post_order_dft()  
