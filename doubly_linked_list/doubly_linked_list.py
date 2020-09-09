@@ -37,10 +37,12 @@ class DoublyLinkedList:
             self.length += 1
 
 
-     """
+    """
+
     Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node.
+
     """
 
     def remove_from_head(self):
@@ -105,18 +107,28 @@ class DoublyLinkedList:
             else:
                 node.prev.next = None
                 self.tail = node.prev
-            self.head.prev = node
-            node.next = self.head
-            node.prev = None
-            self.head = node
+                self.head.prev = node
+                node.next = self.head
+                node.prev = None
+                self.head = node
 
         
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
     """
-    def move_to_end(self, node):
-        pass
+   def move_to_end(self, node):
+        if self.length > 1:
+            if node != self.head:
+                node.prev.next = node.next
+                node.next.prev = node.prev
+            else:
+                node.next.prev = None
+                self.head = node.next
+                self.tail.next = node
+                node.prev = self.tail
+                node.next = None
+                self.tail = node
 
     """
     Deletes the input node from the List, preserving the 
